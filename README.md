@@ -1,78 +1,105 @@
+## Hackathon SQL – Criminal Track
+## Data Detective – Crime Stories via SQL
+## Project Overview
 
-## Haakathon SQL – المسار الجنائي
- ## Data Detective-Crime Stories via SQL 
+The SQL Analyst Hackathon project, part of the nytk Bootcamp, focuses on analyzing crime data to understand the nature of crimes and the influencing factors. The project aims to help law enforcement and decision-makers improve crime prevention strategies and enhance community safety.
 
- ## نبذة عن المشروع
+## Domain Overview
 
-مشروع هاكاثون محلل SQL ضمن معسكر تحليل البيانات بنيوتك ، يركز على تحليل البيانات الجنائية لفهم طبيعة الجرائم والعوامل المؤثرة فيها. يهدف المشروع إلى مساعدة الجهات الأمنية وصانعي القرار على تحسين استراتيجيات الوقاية من الجريمة وتعزيز الأمن المجتمعي.
+The criminal domain is concerned with studying and analyzing crime data to understand its nature and influencing factors, which enables designing innovative solutions and improving crime prevention strategies.
 
-## نبذة عن المجال
+## Data Sources
 
-المجال الجنائي يهتم بدراسة وتحليل بيانات الجرائم لفهم طبيعتها والعوامل المؤثرة فيها، ما يتيح تصميم حلول مبتكرة وتحسين استراتيجيات الوقاية من الجريمة.
+Local Data (crime_data): Details about victims and perpetrators (age, gender, ethnicity), crime type, and report status.
 
+Global Data (World Crime Index): Crime and safety indicators for 199 cities worldwide, such as Crime Index and Safety Index.
 
-## مصادر البيانات
-	•	البيانات المحلية (crime_data): تفاصيل عن الضحايا والجناة (العمر، الجنس، العِرق)، نوع الجريمة وحالة التقرير.
-	•	البيانات العالمية (World Crime Index): مؤشرات الجريمة والأمان في 199 مدينة حول العالم مثل Crime Index و Safety Index.
+## Why We Chose These Data:
 
-## لماذا اخترنا هذه البيانات:
-	المحلية توفر صورة دقيقة على مستوى الأفراد لفهم خصائص الجرائم.
-	العالمية توفر منظورًا مقارنًا بين المدن لتصنيفها حسب الخطورة والأمان.
+Local data provides an accurate individual-level view to understand crime characteristics.
 
+Global data offers a comparative perspective between cities to classify them by risk and safety.
 
- ## المشكلة
+## The Problem
 
-صعوبة تحديد العوامل المرتبطة بارتفاع معدلات الجريمة على المستويين المحلي والعالمي، بالإضافة إلى تحديات البيانات مثل النقص والتكرار، ما يزيد صعوبة التحليل المباشر.
+It is difficult to identify factors associated with high crime rates at both local and global levels, in addition to data challenges such as missing values and duplicates, which complicate direct analysis.
 
+## Analysis Goals
 
-## أهداف التحليل
-	التعرف على الفئات الأكثر عرضة للجريمة محليًا.
-	تصنيف المدن عالميًا وفق مستويات الخطورة والأمان.
-	كشف البيانات الناقصة وحساب مؤشرات شاملة لدعم اتخاذ القرارات الأمنية.
+Identify populations most vulnerable to crime locally.
 
+Classify cities globally according to risk and safety levels.
 
-## الاستعلامات الرئيسية
-	•	أنواع الجرائم المرتبطة بالمدن عالية مؤشر الجريمة (FULL OUTER JOIN, ORDER BY, WHERE).
-	•	توزيع أعمار الجناة في مختلف المدن عالميًا (CROSS JOIN).
-	•	تصنيف المدن إلى عالية/متوسطة/منخفضة الخطورة (CASE, WHERE, THEN).
-	•	عدد الضحايا الذين لم يُسجَّل عمرهم (IS NULL, COUNT).
-	•	مجموع/متوسط/أدنى/أعلى مؤشر جريمة لكل مدينة (SUM, AVG, MIN, MAX, GROUP BY, HAVING).
-	•	ترتيب المدن الأعلى أمانًا (ROW_NUMBER, GROUP BY, HAVING, ORDER BY).
-	•	ترتيب المدن حسب كثافة مؤشر الجريمة (DENSE_RANK, ORDER BY).
-	•	خصائص الجناة المرتبطين بجرائم معينة (BETWEEN, IN).
-	•	أوجه التشابه بين مدن معينة (SELF JOIN, LIKE).
+Detect missing data and calculate comprehensive metrics to support security decision-making.
 
+## Key Queries
 
+Crime types associated with high-crime cities (FULL OUTER JOIN, ORDER BY, WHERE).
 
-## ما تعلمناه من التحليل
-	•	المدن ذات Crime Index > 83.97 تعتبر عالية الخطورة عالميًا.
-	•	بعض المدن متساوية في مؤشر الجريمة، لكن DENSE_RANK وضّح ترتيبها.
-	•	المدن ذات Safety Index > 52 أكثر أمانًا.
-	•	تقسيم المدن حسب الحرف الأول وRANK أظهر اختلافات كبيرة بين المدن المتقاربة.
-	•	تحليل المجموع والمتوسط والحد الأدنى والأقصى كشف متوسطات مرتفعة جدًا لبعض المدن.
+Age distribution of offenders across cities globally (CROSS JOIN).
 
+Classification of cities into high/medium/low risk (CASE, WHERE, THEN).
 
+Number of victims with unrecorded age (IS NULL, COUNT).
 
-## ما تخبرنا به الأرقام
-	•	تصنيف المدن حسب مستويات الخطر.
-	•	توضيح الفئات الأكثر ارتباطًا بأنواع معينة من الجرائم.
-	•	كشف اختلافات واضحة بين المدن والدول.
-	•	دعم بناء نماذج تنبؤية لتقدير احتمالية وقوع الجرائم مستقبلًا.
+Sum/average/min/max crime index per city (SUM, AVG, MIN, MAX, GROUP BY, HAVING).
 
- ## ما زال غامضًا
-بعض البيانات ناقصة تؤثر على دقة التحليل.
-تشابه مستوى الأمان لا يعني تشابه نوعية الجرائم.
-الحاجة إلى تحسين جمع البيانات ووجود متغيرات مهمة مثل الاقتصاد والبطالة والكثافة السكانية
+Ranking the safest cities (ROW_NUMBER, GROUP BY, HAVING, ORDER BY).
 
-## الحلول المقترحة
-منصات ذكية لتسجيل البيانات بدقة وفوريًا.
-نظام تفاعلي للمدن: خرائط حرارية لمستوى الأمان.
-تحليل تنبؤي باستخدام الذكاء الاصطناعي لتوقع مناطق وفئات الجرائم.
-حملات توعية مبتكرة للشباب لتعزيز السلوكيات الإيجابية.
-مراقبة ذكية: كاميرات وأجهزة إنذار مرتبطة بالتحليل الفوري.
+Ranking cities by crime index density (DENSE_RANK, ORDER BY).
 
-## أمثلة من الواقع
-برنامج “السلامة المجتمعية” في وزارة الداخلية.
-كاميرات المراقبة الذكية في الرياض وجدة.
-مبادرات التوعية الرقمية للشباب عبر وسائل التواصل.
-مراكز الشرطة الذكية لتحليل البلاغات بسرعة وتخصيص الدوريات.
+Offender characteristics linked to specific crimes (BETWEEN, IN).
+
+Similarities between certain cities (SELF JOIN, LIKE).
+
+## What We Learned from the Analysis
+
+Cities with Crime Index > 83.97 are considered high-risk globally.
+
+Some cities have the same Crime Index, but DENSE_RANK clarified their ranking.
+
+Cities with Safety Index > 52 are safer.
+
+Dividing cities by first letter and RANK showed significant differences between closely ranked cities.
+
+Sum, average, min, and max analysis revealed very high averages for some cities.
+
+## What the Numbers Tell Us
+
+Classification of cities by risk levels.
+
+Identifying populations most associated with specific crime types.
+
+Revealing clear differences between cities and countries.
+
+Supporting predictive models to estimate the likelihood of future crimes.
+
+## Still Unclear
+
+Some missing data affects analysis accuracy.
+
+Similar safety levels do not imply similar crime types.
+
+Need to improve data collection and include important variables such as economy, unemployment, and population density.
+
+## Proposed Solutions
+
+Smart platforms for accurate and real-time data recording.
+
+Interactive city system: heatmaps of safety levels.
+
+Predictive analysis using AI to anticipate crime zones and target populations.
+
+Innovative youth awareness campaigns to promote positive behaviors.
+
+Smart monitoring: cameras and alarms linked to real-time analysis.
+
+## Real-World Examples
+
+“Community Safety” program by the Ministry of Interior.
+
+Smart surveillance cameras in Riyadh and Jeddah.
+
+Digital awareness initiatives for youth via social media.
+
+Smart police centers for rapid report analysis and patrol allocation.
